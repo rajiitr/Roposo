@@ -75,9 +75,8 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
                 Glide.with(context).load(authors.get(i).imageUrl).into(holder.profile);
             }
         }
-        if(stories.get(position).storyUrl!= null) {
+
             Glide.with(context).load(stories.get(position).storyUrl).into(holder.cover);
-        }
         /*if(stories.get(position).storyUrl!= null) {
             Glide.with(context).load(stories.get(position).storyUrl).into(holder.cover);
             holder.cover.setBackgroundDrawable(stories.get(position).cover);

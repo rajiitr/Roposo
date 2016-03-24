@@ -18,10 +18,10 @@
 
             <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textColor="#efefef" android:textSize="18sp"
+                android:textColor="@color/custom_primary_text_color" android:textSize="18sp"
                 android:id="@+id/tvStoryTitle" android:textStyle="bold"
                 android:layout_marginLeft="12sp" android:layout_marginBottom="12sp"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignParentBottom="true"  />
 
         </RelativeLayout>
 
@@ -41,7 +41,7 @@
             android:layout_marginRight="24sp" android:layout_marginLeft="24sp"
             android:layout_marginBottom="12sp">
 
-            <com.homoso.followthatbooty.RoundImageView
+            <com.homoso.followthatbooty.RoundedImageView
                 android:layout_width="40sp" android:layout_height="40sp"
                 android:id="@+id/ivStoryProfile" android:layout_centerVertical="true"
                 android:layout_marginRight="8sp"/>

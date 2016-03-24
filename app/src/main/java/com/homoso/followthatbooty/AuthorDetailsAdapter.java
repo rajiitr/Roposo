@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 /**
@@ -68,13 +70,14 @@ public class AuthorDetailsAdapter extends RecyclerView.Adapter<AuthorDetailsAdap
             if(authors.get(i).id.equals(db)){
                 holder.author.setText(authors.get(i).name);
                 holder.totalFollowers.setText(authors.get(i).followers + "");
+                Glide.with(context).load(authors.get(i).imageUrl).into(holder.profile);
             }
         }
-
-        if(stories.get(position).cover!= null)
+        Glide.with(context).load(stories.get(position).storyUrl).into(holder.cover);
+        /*if(stories.get(position).cover!= null)
             holder.cover.setBackgroundDrawable(stories.get(position).cover);
         if(stories.get(position).profile!= null)
-            holder.profile.setBackgroundDrawable(stories.get(position).profile);
+            holder.profile.setBackgroundDrawable(stories.get(position).profile);*/
 
         if(stories.get(position).liked) {
             holder.followLayout.setBackgroundDrawable(tintDrawable(R.drawable.custom_follow_button, R.color.custom_primary_color));
