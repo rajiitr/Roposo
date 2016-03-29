@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     private ArrayList<DataAuthor> authors;
     Context context;
     RelativeLayout layout;
+    LinearLayoutManager layoutManager;
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView title, story, author, totalFollowers;
@@ -49,11 +51,13 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
         }
     }
 
-    public StoryAdapter(ArrayList<DataStory> stories, ArrayList<DataAuthor> authors, Context context, RelativeLayout layout) {
+    public StoryAdapter(ArrayList<DataStory> stories, ArrayList<DataAuthor> authors, Context context, RelativeLayout layout,
+                        LinearLayoutManager layoutManager) {
         this.stories= stories;
         this.authors= authors;
         this.layout= layout;
         this.context= context;
+        this.layoutManager= layoutManager;
     }
 
     @Override
@@ -113,6 +117,21 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
                         stories.get(i).liked= !stories.get(i).liked;
                     }
                 }
+                int firstPos= layoutManager.findFirstVisibleItemPosition();
+                int lastPos= layoutManager.findLastVisibleItemPosition();
+
+                if(firstPos-2<0)
+                    firstPos=0;
+                else
+                    firstPos-=2;
+
+                if(lastPos+2>=stories.size())
+                    lastPos=stories.size()-1;
+                else
+                    lastPos+=2;
+
+                notifyItemRangeChanged(firstPos, lastPos-firstPos + 1);
+                showToast(firstPos + ", " + lastPos);
             }
         });
 

@@ -31,7 +31,7 @@ public class FragmentStory extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
-    RecyclerView.LayoutManager layoutManager;
+    LinearLayoutManager layoutManager;
     RelativeLayout layout;
 
     ArrayList<DataStory> stories;
@@ -124,7 +124,7 @@ public class FragmentStory extends Fragment {
             showToast("null");
         }
 
-        adapter = new StoryAdapter(stories, authors, getActivity(), layout);
+        adapter = new StoryAdapter(stories, authors, getActivity(), layout, layoutManager);
         recyclerView.setAdapter(adapter);
     }
 
